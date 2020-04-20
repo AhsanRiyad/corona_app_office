@@ -1,14 +1,14 @@
 module.exports = {
-  publicPath: "/ok",
-  lintOnSave: false,
-  runtimeCompiler: true,
-  configureWebpack: {
-    //Necessary to run npm link https://webpack.js.org/configuration/resolve/#resolve-symlinks
-    resolve: {
-       symlinks: false
+  "publicPath": "/ok",
+  "lintOnSave": false,
+  "runtimeCompiler": true,
+  "configureWebpack": {
+    "resolve": {
+      "symlinks": false
     }
   },
-  transpileDependencies: [
-    '@coreui/utils'
+  "transpileDependencies": [
+    "@coreui/utils",
+    "vuetify"
   ]
 }

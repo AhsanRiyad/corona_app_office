@@ -9,6 +9,7 @@ import store from './store'
 //newly added
 import VueCookies from 'vue-cookies'
 import axios from 'axios'
+import vuetify from './plugins/vuetify';
 
 Vue.prototype.$axios = axios;
 Vue.use(VueCookies);
@@ -28,6 +29,8 @@ new Vue({
   store,
   icons,
   template: '<App/>',
+  vuetify,
+
   components: {
     App
   }
