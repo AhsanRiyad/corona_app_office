@@ -2,9 +2,16 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 Vue.use(Vuex)
 
+
 const state = {
   sidebarShow: 'responsive',
-  sidebarMinimize: false
+  sidebarMinimize: false,
+  base_api: 'http://localhost/backend_all/laravel_computer_shop/public/',
+  axios_headers: {
+    'Content-Type': 'application/x-www-form-urlencoded', 
+    'Accept': 'application/json',
+  },
+  base: 'https://covid.babl.xyz/cvp/',
 }
 
 const mutations = {

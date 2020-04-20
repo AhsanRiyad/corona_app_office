@@ -7,56 +7,57 @@
     </CCardHeader>
     <CCardBody>
       <CDataTable
-        :hover="hover"
-        :striped="striped"
-        :bordered="bordered"
-        :small="small"
-        :fixed="fixed"
-        :items="items"
-        :fields="fields"
-        :items-per-page="small ? 10 : 5"
-        :dark="dark"
-        pagination
+      table-filter
+      items-per-page-select
+      :hover="hover"
+      :striped="striped"
+      :bordered="bordered"
+      :small="small"
+      :fixed="fixed"
+      :items="items"
+      :fields="fields"
+      :items-per-page="small ? 10 : 5"
+      :dark="dark"
+      pagination
       >
-        <template #status="{item}">
-          <td>
-            <CBadge :color="getBadge(item.status)">{{item.status}}</CBadge>
-          </td>
-        </template>
-      </CDataTable>
-    </CCardBody>
-  </CCard>
+      
+    </CDataTable>
+  </CCardBody>
+</CCard>
 </template>
 
+
+
+
 <script>
-export default {
-  name: 'Table',
-  props: {
-    items: Array,
-    fields: {
-      type: Array,
-      default () {
-        return ['username', 'registered', 'role', 'status']
-      }
+  export default {
+    name: 'Table',
+    props: {
+      items: Array,
+      fields: {
+        type: Array,
+        default () {
+          return ['latitudeSender' , 'nearByBluetoothId', 'senderBluetoothId', 'longitudeSender' , 'senderTimestamp']
+        }
+      },
+      caption: {
+        type: String,
+        default: 'Table'
+      },
+      hover: Boolean,
+      striped: Boolean,
+      bordered: Boolean,
+      small: Boolean,
+      fixed: Boolean,
+      dark: Boolean
     },
-    caption: {
-      type: String,
-      default: 'Table'
-    },
-    hover: Boolean,
-    striped: Boolean,
-    bordered: Boolean,
-    small: Boolean,
-    fixed: Boolean,
-    dark: Boolean
-  },
-  methods: {
-    getBadge (status) {
-      return status === 'Active' ? 'success'
+    methods: {
+      getBadge (status) {
+        return status === 'Active' ? 'success'
         : status === 'Inactive' ? 'secondary'
-          : status === 'Pending' ? 'warning'
-            : status === 'Banned' ? 'danger' : 'primary'
+        : status === 'Pending' ? 'warning'
+        : status === 'Banned' ? 'danger' : 'primary'
+      }
     }
   }
-}
 </script>

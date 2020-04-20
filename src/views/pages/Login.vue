@@ -23,7 +23,7 @@
             </CInput>
             <CRow>
               <CCol col="6" class="text-left">
-                <CButton color="primary" class="px-4">Login</CButton>
+                <CButton color="primary" class="px-4" @click.stop="()=>{ $router.push({ name: 'Badges' }); }" >Login</CButton>
               </CCol>
               <CCol col="6" class="text-right">
                 <CButton color="link" class="px-0">Forgot password?</CButton>
@@ -64,30 +64,24 @@
     computed:{},
     methods: {
       get_login_info(){
+        this.$cookies.set('email' , 'riyad298@gmail.com');
+        this.$axios.get( this.$store.state.base+'userLogin' , {
 
-        let headers = {
-          'Content-Type': 'application/x-www-form-urlencoded',
-          'Accept': 'application/json'} ;
+        } , this.$store.state.axios_headers )
+        .then(function(response){
+          console.log(response);
+        }.bind(this))
+        .catch(function () {
 
-          this.$axios.get( 'http://localhost/backend_all/laravel_computer_shop/public/get_invoice_info/11122' , {
+        }.bind(this)); 
 
-          } , headers )
-          .then(function(response){
-            console.log(response);
-          }.bind(this))
-          .catch(function () {
-
-          }.bind(this)); 
-
-        }
-      },
-      created(){
-
-        this.get_login_info();
-
-      },
-      mounted(){},
-      updated(){
+      }
+    },
+    created(){
+      this.get_login_info();
+    },
+    mounted(){},
+    updated(){
       // console.log(this.selected);
     }
 
