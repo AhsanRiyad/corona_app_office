@@ -10,7 +10,23 @@ export default [
         badge: {
           color: 'primary',
           text: 'NEW'
-        }
+        },
+
+
+
+      },
+      {
+        _name: 'CSidebarNavItem',
+        name: 'Forms',
+        to: '/base/forms',
+        icon: 'cil-speedometer',
+        badge: {
+          color: 'primary',
+          text: 'NEW'
+        },
+        
+
+        
       },
       {
         _name: 'CSidebarNavTitle',

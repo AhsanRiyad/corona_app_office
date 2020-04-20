@@ -5,12 +5,13 @@
         <CCardGroup>
           <CCard class="p-4">
             <CCardBody>
-              <CForm>
+              <CForm >
                 <h1>Login</h1>
                 <p class="text-muted">Sign In to your account</p>
                 <CInput
                 placeholder="Username"
                 autocomplete="username email"
+                v-model="user_name"
                 >
                 <template #prepend-content><CIcon name="cil-user"/></template>
               </CInput>
@@ -18,12 +19,13 @@
               placeholder="Password"
               type="password"
               autocomplete="curent-password"
+              v-model="password"
               >
               <template #prepend-content><CIcon name="cil-lock-locked"/></template>
             </CInput>
             <CRow>
               <CCol col="6" class="text-left">
-                <CButton color="primary" class="px-4" @click.stop="()=>{ $router.push({ name: 'Badges' }); }" >Login</CButton>
+                <CButton color="primary" class="px-4" @click.stop="submit" >Login</CButton>
               </CCol>
               <CCol col="6" class="text-right">
                 <CButton color="link" class="px-0">Forgot password?</CButton>
@@ -60,10 +62,35 @@
     components: {},
     data: ()=>({
       name: 'Riyad',
+
+
+
+      //form
+      user_name: '',
+      password: '',
     }),
     computed:{},
     methods: {
+      submit(){
+
+        this.$axios.get( this.$store.state.base+'userLogin' , {
+          user_name: this.user_name,
+          password: this.password,
+        } , this.$store.state.axios_headers )
+        .then(function(response){
+          console.log(response);
+        }.bind(this))
+        .catch(function () {
+        }.bind(this)); 
+
+
+        this.$router.push({ name: 'Dashboard' }); 
+
+      },
       get_login_info(){
+
+        console.log(this.$refs);
+
         this.$cookies.set('email' , 'riyad298@gmail.com');
         this.$axios.get( this.$store.state.base+'userLogin' , {
 
